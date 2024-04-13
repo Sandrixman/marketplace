@@ -2,12 +2,13 @@ import { Suspense } from "react"
 
 import PrivateRoutes from "routes/PrivateRoutes"
 import PublicRoutes from "routes/PublicRoutes"
-import Header from "features/Header"
-import { AppStyles, Footer, PageWrapper } from "App.styled"
+import Header from "blocks/Header/Header"
+
+import { AppStyles, Footer, PageWrapper } from "./GlobalStyle"
 
 const App = () => {
     return (
-        <>
+        <Suspense fallback="Loading...">
             <AppStyles />
 
             <Header />
@@ -22,7 +23,7 @@ const App = () => {
             <Footer>
                 <div>© Marketplace</div>
             </Footer>
-        </>
+        </Suspense>
     )
 }
 

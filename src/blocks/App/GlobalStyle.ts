@@ -29,6 +29,10 @@ export const AppStyles = createGlobalStyle`
     font-size: 2em;
     margin: 0.67em 0;
     }
+    h2, h3, h4 {
+        padding: 0;
+        margin: 0;
+    }
     hr {
     box-sizing: content-box;
     height: 0;
@@ -36,6 +40,7 @@ export const AppStyles = createGlobalStyle`
     }
     a {
     background-color: transparent;
+    text-decoration: none;
     }
     abbr[title] {
     border-bottom: none;

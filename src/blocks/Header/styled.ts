@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     padding: 14px 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: ${colors.primary};
     color: #fff;
     transition: margin 2s ease-out;

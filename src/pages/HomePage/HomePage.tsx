@@ -1,5 +1,8 @@
 import { Helmet } from "react-helmet"
-import { Div } from "./styled"
+import { dummyProducts } from "dummyProducts"
+import { ProductsGroup } from "./styled"
+
+import ProductCard from "blocks/ProductCard"
 
 const HomePage: React.FC = () => {
     return (
@@ -8,7 +11,11 @@ const HomePage: React.FC = () => {
                 <title>Головна сторінка Marketplace</title>
             </Helmet>
 
-            <Div>HomePage</Div>
+            <ProductsGroup>
+                {dummyProducts.map((p) => (
+                    <ProductCard {...p} key={p.id} />
+                ))}
+            </ProductsGroup>
         </>
     )
 }
