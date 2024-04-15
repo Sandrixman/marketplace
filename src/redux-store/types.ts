@@ -1,5 +1,7 @@
 export interface I_User {
-    name: string | null
+    nameFirst: string | null
+    nameLast?: string | null
+    displayName?: string | null
     email?: string | null
 }
 
@@ -16,7 +18,9 @@ export interface I_Store {
 }
 
 export interface I_RegisterCredentials {
-    name: string
+    nameFirst: string
+    nameLast?: string
+    displayName?: string
     email: string
     password: string
 }
@@ -28,7 +32,7 @@ export interface I_LoginCredentials {
 
 export interface I_AuthResponse {
     user: {
-        name: string
+        nameFirst: string
     }
     token: string
 }

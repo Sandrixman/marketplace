@@ -1,9 +1,7 @@
 import { Suspense } from "react"
-
 import PrivateRoutes from "routes/PrivateRoutes"
 import PublicRoutes from "routes/PublicRoutes"
-import Header from "blocks/Header/Header"
-
+import Header from "components/Header"
 import { AppStyles, Footer, PageWrapper } from "./GlobalStyle"
 
 const App = () => {

@@ -5,7 +5,7 @@ import { PersistGate } from "redux-persist/integration/react"
 import { persistor, store } from "redux-store/store"
 import { BrowserRouter } from "react-router-dom"
 
-import App from "./blocks/App/App"
+import App from "./components/App/App"
 import "./features/LangSwitcher/config/i18n"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)

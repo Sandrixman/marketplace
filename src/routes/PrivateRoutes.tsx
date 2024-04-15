@@ -2,6 +2,7 @@ import { lazy } from "react"
 import { Route, Routes, Navigate, useLocation } from "react-router-dom"
 import { checkPathMatch, paths } from "./helpers"
 
+const FavoritesPage = lazy(() => import("pages/FavoritesPage"))
 const AccountSettingPage = lazy(() => import("pages/AccountSettingPage"))
 
 const PrivateRoutes: React.FC = () => {
@@ -12,6 +13,7 @@ const PrivateRoutes: React.FC = () => {
     return (
         <Routes>
             <Route path={paths.accountSettings} element={<AccountSettingPage />} />
+            <Route path={paths.favorites} element={<FavoritesPage />} />
             <Route path="*" element={!isMatch ? <Navigate to={paths.home} /> : null} />
         </Routes>
     )

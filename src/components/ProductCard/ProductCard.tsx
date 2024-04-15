@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import colors from "consts/colors"
-import { ReactComponent as HeartEmpty } from "./img/heart.svg"
-import { ReactComponent as HeartFilled } from "./img/heart-filled.svg"
+import { ReactComponent as HeartEmpty } from "../img/heart.svg"
+import { ReactComponent as HeartFilled } from "../img/heart-filled.svg"
 import * as SC from "./styled"
 
 interface ProductCardProps {
@@ -36,13 +36,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     return (
         <SC.ProductCard>
-            <SC.HeartWrapper onClick={onFavorite}>
+            <SC.HeartIconWrapper onClick={onFavorite}>
                 {!favorite ? (
                     <HeartEmpty fill={colors.primary} />
                 ) : (
                     <HeartFilled fill={colors.primary} />
                 )}
-            </SC.HeartWrapper>
+            </SC.HeartIconWrapper>
             <Link to={`/product/${slug || id}`}>
                 <SC.CardImg src={imgSrc} alt={`Зображення ${title}`} />
             </Link>

@@ -1,9 +1,11 @@
 export const pathsPublic: { [key: string]: string } = {
     home: "/",
+    login: "/login",
     productDetails: "/product/:idOrSlug",
 }
 
 export const pathsPrivate: { [key: string]: string } = {
+    favorites: "/favorites",
     accountSettings: "/account-settings",
 }
 

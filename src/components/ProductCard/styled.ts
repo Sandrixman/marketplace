@@ -1,7 +1,7 @@
 import colors from "consts/colors"
 import styled from "styled-components"
 
-export const HeartWrapper = styled.div`
+export const HeartIconWrapper = styled.div`
     position: absolute;
     top: 0;
     right: 0;

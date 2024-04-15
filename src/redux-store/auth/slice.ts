@@ -5,7 +5,12 @@ import { register, logIn, logOut, refreshUser } from "./operations"
 import { I_AuthResponse, I_AuthState, I_User } from "../types"
 
 const initialState: I_AuthState = {
-    user: { name: null, email: null },
+    user: {
+        nameFirst: null,
+        nameLast: null,
+        displayName: null,
+        email: null,
+    },
     token: null,
     theme: "light",
     isLoggedIn: false,
@@ -59,7 +64,12 @@ export const authSlice = createSlice({
                 state.isLoading = false
             })
             .addCase(logOut.fulfilled, (state) => {
-                state.user = { name: null, email: null }
+                state.user = {
+                    nameFirst: null,
+                    nameLast: null,
+                    displayName: null,
+                    email: null,
+                }
                 state.token = null
                 state.isLoggedIn = false
             })
@@ -67,7 +77,7 @@ export const authSlice = createSlice({
                 state.isRefreshing = true
             })
             .addCase(refreshUser.fulfilled, (state, action: PayloadAction<I_AuthResponse>) => {
-                state.user = { name: action.payload.user.name }
+                state.user = { nameFirst: action.payload.user.nameFirst }
                 state.isLoggedIn = true
                 state.isRefreshing = false
             })
