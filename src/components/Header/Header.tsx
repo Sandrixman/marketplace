@@ -1,22 +1,28 @@
-import { useState } from "react"
-import { useSelector } from "react-redux"
-import { selectIsLoggedIn } from "redux-store/auth/selectors"
+import { ChangeEvent } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { paths } from "routes/helpers"
+import { selectIsLoggedIn } from "redux-store/auth/selectors"
+import { selectFavorites, selectFilter } from "redux-store/products/selectors"
 
 import { LangSwitcher, ThemeSwitcher } from "features"
 import DropdownPanel from "common/DropdownPanel"
 import UserDropdownMenu from "./UserDropdownMenu"
+import UserAvatar from "./UserAvatar"
 
 import logo from "../img/logo.png"
 import * as SC from "./styled"
-import UserAvatar from "./UserAvatar"
+import { findProduct } from "redux-store/products/slice"
 
 const Header: React.FC = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
-    const [serchInput, setSerchInput] = useState("")
+    const favorites = useSelector(selectFavorites)
+    const filter = useSelector(selectFilter)
 
-    const changeSearchInput = (e: any) => {
-        setSerchInput(e)
+    const dispatch = useDispatch()
+
+    const handleFilter = (e: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.currentTarget.value
+        dispatch(findProduct(inputValue))
     }
 
     return (
@@ -26,13 +32,13 @@ const Header: React.FC = () => {
                 <button>Каталог</button>
                 <input
                     type="text"
-                    value={serchInput}
-                    onChange={changeSearchInput}
+                    value={filter}
+                    onChange={handleFilter}
                     placeholder="Пошук товарів"
                 />
                 {!isLoggedIn ? (
                     <>
-                        <SC.BtnFavorites />
+                        <SC.BtnFavorites count={favorites.length} />
                         <DropdownPanel toggler={(toggleFn) => <UserAvatar onClick={toggleFn} />}>
                             <UserDropdownMenu />
                         </DropdownPanel>

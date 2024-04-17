@@ -1,9 +1,12 @@
 import { Helmet } from "react-helmet"
-import { dummyProducts } from "dummyProducts"
 import ProductCard from "components/ProductCard"
 import * as SC from "./styled"
+import { useSelector } from "react-redux"
+import { selectFilteredOutProducts } from "redux-store/products/selectors"
 
 const HomePage: React.FC = () => {
+    const filteredOutProducts = useSelector(selectFilteredOutProducts)
+
     return (
         <>
             <Helmet>
@@ -11,7 +14,7 @@ const HomePage: React.FC = () => {
             </Helmet>
 
             <SC.ProductsGroup>
-                {dummyProducts.map((p) => (
+                {filteredOutProducts.map((p) => (
                     <ProductCard {...p} key={p.id} />
                 ))}
             </SC.ProductsGroup>

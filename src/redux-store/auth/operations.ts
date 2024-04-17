@@ -108,7 +108,9 @@ export const refreshUser = createAsyncThunk<I_AuthResponse, void, { rejectValue:
             const { data } = await axios.get<I_AuthResponse>("/users/current")
             return data
         } catch (error: any) {
-            return thunkAPI.rejectWithValue(error.message)
+            return thunkAPI.rejectWithValue({
+                message: error.message,
+            })
         }
     }
 )

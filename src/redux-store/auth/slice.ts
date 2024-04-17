@@ -21,16 +21,11 @@ const initialState: I_AuthState = {
 export const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: (create) => ({
-        changeTheme: create.preparedReducer(
-            (text: "light" | "dark") => {
-                return { payload: text }
-            },
-            (state, action) => {
-                state.theme = action.payload
-            }
-        ),
-    }),
+    reducers: {
+        changeTheme: (state, action) => {
+            state.theme = action.payload
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(register.pending, (state) => {

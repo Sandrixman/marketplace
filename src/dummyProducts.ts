@@ -10,7 +10,7 @@ interface I_dummyProducts {
 
 export const dummyProducts: I_dummyProducts[] = [
     {
-        id: "583ea83a09e9497a0eb1b82a",
+        id: "583ea83a09e9497a0eb1b75a",
         slug: "myltivarka",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/87/91/w530_f9lenhvun_55bd2c19.webp",
         priceRegular: 3000,
@@ -19,7 +19,7 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Мультиварка - це універсальний пристрій для приготування їжі, що поєднує функції сковороди, духовки, каструлі і ще деяких кухонних помічників. Головна перевага даної техніки полягає в автоматичному процесі отримання страв, що дає користувачеві більше вільного часу. При вмілій експлуатації приладу можна отримати досить різноманітне меню.",
     },
     {
-        id: "583ea83a09e9497a5eb1b82a",
+        id: "583ea83a09e9497a5eb1b80a",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/30/31/w530_f9jdmg6kg_2572547c.webp",
         priceRegular: 13000,
         priceDiscounted: 11000,
@@ -27,7 +27,7 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Ноутбук Thomson Neo 14.1 (UA-P14C4BK128) Black",
     },
     {
-        id: "583ea83a09e9497a0eb1b82a",
+        id: "583ea83a09e9497a0eb1b83a",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/94/8d/w530_f94pt1f05_a09046f4.webp",
         priceRegular: 23000,
         title: "Телевізор Hisense 43A6BG",
@@ -43,7 +43,7 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Мультиварка - це універсальний пристрій для приготування їжі, що поєднує функції сковороди, духовки, каструлі і ще деяких кухонних помічників. Головна перевага даної техніки полягає в автоматичному процесі отримання страв, що дає користувачеві більше вільного часу. При вмілій експлуатації приладу можна отримати досить різноманітне меню.",
     },
     {
-        id: "583ea83a09e9497a5eb1b82a",
+        id: "583ea83a09e9497a5eb1b42a",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/30/31/w530_f9jdmg6kg_2572547c.webp",
         priceRegular: 13000,
         priceDiscounted: 11000,
@@ -51,14 +51,14 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Ноутбук Thomson Neo 14.1 (UA-P14C4BK128) Black",
     },
     {
-        id: "583ea83a09e9497a0eb1b82a",
+        id: "583ea83a09e9497a0eb1b48a",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/94/8d/w530_f94pt1f05_a09046f4.webp",
         priceRegular: 23000,
         title: "Телевізор Hisense 43A6BG",
         desc: "Опис Телевізор Hisense 43A6BG",
     },
     {
-        id: "583ea83a09e9497a0eb1b82a",
+        id: "583ea83a09e9497a0eb1b812",
         slug: "myltivarka",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/87/91/w530_f9lenhvun_55bd2c19.webp",
         priceRegular: 3000,
@@ -67,7 +67,7 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Мультиварка - це універсальний пристрій для приготування їжі, що поєднує функції сковороди, духовки, каструлі і ще деяких кухонних помічників. Головна перевага даної техніки полягає в автоматичному процесі отримання страв, що дає користувачеві більше вільного часу. При вмілій експлуатації приладу можна отримати досить різноманітне меню.",
     },
     {
-        id: "583ea83a09e9497a5eb1b82a",
+        id: "583ea83a09e9497a5eb1bj45",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/30/31/w530_f9jdmg6kg_2572547c.webp",
         priceRegular: 13000,
         priceDiscounted: 11000,
@@ -75,7 +75,7 @@ export const dummyProducts: I_dummyProducts[] = [
         desc: "Ноутбук Thomson Neo 14.1 (UA-P14C4BK128) Black",
     },
     {
-        id: "583ea83a09e9497a0eb1b82a",
+        id: "583ea83a09e9497a0eb1bg2a",
         imgSrc: "https://vmtehnika.com.ua/uploads/product_galleries/94/8d/w530_f94pt1f05_a09046f4.webp",
         priceRegular: 23000,
         title: "Телевізор Hisense 43A6BG",
