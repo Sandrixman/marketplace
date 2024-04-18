@@ -2,9 +2,9 @@ import { createSlice, PayloadAction, isPending, isRejected, isFulfilled } from "
 import storage from "redux-persist/lib/storage"
 import { persistReducer } from "redux-persist"
 
-import { dummyProducts } from "dummyProducts"
+import { dummyProducts } from "redux-store/dummyProducts"
 import { fetchProducts, addProduct, deleteProduct } from "./operations"
-import { I_ProductState } from "redux-store/types"
+import { I_ProductState } from "types/products/types"
 
 const initialState: I_ProductState = {
     allProducts: {
@@ -12,7 +12,7 @@ const initialState: I_ProductState = {
         isLoading: false,
         error: null,
     },
-    favorites: [],
+    favoritesId: [],
     filter: "",
 }
 
@@ -23,15 +23,15 @@ const productsSlice = createSlice({
         findProduct(state, action: PayloadAction<string>) {
             state.filter = action.payload
         },
-        switchFavorites(state, action) {
-            const productId = action.payload.id
-
-            const checkFavorite = state.favorites.findIndex((product) => product.id === productId)
-
-            if (checkFavorite !== -1) {
-                state.favorites = state.favorites.filter((product) => product.id !== productId)
+        // checking favorites & adding or remove favorite
+        switchFavorites(state, action: PayloadAction<string>) {
+            const checkFavorite = state.favoritesId.includes(action.payload)
+            if (checkFavorite) {
+                state.favoritesId = state.favoritesId.filter(
+                    (productId) => productId !== action.payload
+                )
             } else {
-                state.favorites.push(action.payload)
+                state.favoritesId.push(action.payload)
             }
         },
     },
@@ -67,7 +67,7 @@ const productsSlice = createSlice({
 const persistProductsConfig = {
     key: "products",
     storage,
-    whitelist: ["favorites"],
+    whitelist: ["favoritesId"],
 }
 
 export const { findProduct, switchFavorites } = productsSlice.actions

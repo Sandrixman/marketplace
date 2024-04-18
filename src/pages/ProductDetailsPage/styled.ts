@@ -1,6 +1,4 @@
 import styled from "styled-components"
 
-export const Div = styled.div`
-    background-color: red;
-    height: 20px;
-`
+export const HeartIconWrapper = styled.div``
+export const Div = styled.div``

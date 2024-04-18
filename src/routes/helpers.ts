@@ -1,7 +1,7 @@
 export const pathsPublic: { [key: string]: string } = {
     home: "/",
     login: "/login",
-    productDetails: "/product/:idOrSlug",
+    productDetails: "/products/:idOrSlug",
 }
 
 export const pathsPrivate: { [key: string]: string } = {
@@ -18,7 +18,7 @@ export const checkPathMatch = (pathname: string, paths: { [key: string]: string 
     const pathFirstSection = pathname.split("/")[1]
 
     allPaths.forEach((path) => {
-        if (path.slice(1) === pathFirstSection) isMatch = true
+        if (path.split("/")[1] === pathFirstSection) isMatch = true
     })
 
     return isMatch

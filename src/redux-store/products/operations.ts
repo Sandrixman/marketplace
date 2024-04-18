@@ -1,7 +1,7 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import { I_Product } from "redux-store/types"
+import { I_Product } from "types/products/types"
 
 export const fetchProducts = createAsyncThunk("products/fetchAll", async (_, thunkAPI) => {
     try {

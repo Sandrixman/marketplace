@@ -1,14 +1,6 @@
-interface I_dummyProducts {
-    id: string
-    slug?: string
-    imgSrc: string
-    priceRegular: number
-    priceDiscounted?: number
-    title: string
-    desc: string
-}
+import { I_Product } from "types/products/types"
 
-export const dummyProducts: I_dummyProducts[] = [
+export const dummyProducts: I_Product[] = [
     {
         id: "583ea83a09e9497a0eb1b75a",
         slug: "myltivarka",

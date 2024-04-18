@@ -10,17 +10,17 @@ import { AppStyles, Footer, PageWrapper } from "./GlobalStyle"
 const App = () => {
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(authOperations.refreshUser() as any)
-            .then((response: any) => {
-                if (response.payload.message) {
-                    console.log(response.payload.message)
-                }
-            })
-            .catch((error: SerializedError) => {
-                console.error("refreshUser Error", error.message)
-            })
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(authOperations.refreshUser() as any)
+    //         .then((response: any) => {
+    //             if (response.payload.message) {
+    //                 console.log(response.payload.message)
+    //             }
+    //         })
+    //         .catch((error: SerializedError) => {
+    //             console.error("refreshUser Error", error.message)
+    //         })
+    // }, [dispatch])
 
     return (
         <Suspense fallback="Loading...">

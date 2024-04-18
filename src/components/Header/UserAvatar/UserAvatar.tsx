@@ -7,7 +7,7 @@ interface UserAvatarProps {
 const UserAvatar: React.FC<UserAvatarProps> = ({ onClick }) => {
     return (
         <>
-            <SC.UserAvatar onClick={onClick}></SC.UserAvatar>
+            <SC.UserAvatar onClick={onClick} data-id="user-avatar"></SC.UserAvatar>
         </>
     )
 }

@@ -12,6 +12,9 @@ export const HeartIconWrapper = styled.div`
 
 export const ProductCard = styled.div`
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 200px;
     height: 300px;
     overflow: hidden;
@@ -22,6 +25,8 @@ export const CardImg = styled.img`
     margin-bottom: 10px;
     cursor: pointer;
 `
+
+export const CardInfo = styled.div``
 
 export const PriceWrapper = styled.div`
     display: flex;

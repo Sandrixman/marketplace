@@ -1,55 +1,64 @@
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { toast } from "react-toastify"
+import { useMemo } from "react"
+import { useLocation } from "react-router-dom"
 import { switchFavorites } from "redux-store/products/slice"
-import { selectFavorites } from "redux-store/products/selectors"
+import { selectFavoritesId } from "redux-store/products/selectors"
 
 import colors from "consts/colors"
-import { ReactComponent as HeartEmpty } from "../img/heart.svg"
-import { ReactComponent as HeartFilled } from "../img/heart-filled.svg"
-import { I_Product } from "redux-store/types"
+import { ReactComponent as HeartEmpty } from "img/heart.svg"
+import { ReactComponent as HeartFilled } from "img/heart-filled.svg"
+import { I_Product } from "types/products/types"
 import * as SC from "./styled"
 
 const ProductCard: React.FC<I_Product> = (product) => {
     const dispatch = useDispatch()
-    const favorites = useSelector(selectFavorites)
+    const favoritesId = useSelector(selectFavoritesId)
+    const location = useLocation()
 
-    const checkFavorite = favorites.findIndex((favorite) => favorite.id === product.id)
+    // checking for render the extra button
+    const isFavoritePage = useMemo(() => location.pathname === "/favorites", [location.pathname])
 
-    const onFavorite = (product: I_Product) => {
-        dispatch(switchFavorites(product))
+    const checkFavorite = favoritesId.includes(product.id)
+
+    const onFavorite = (productId: string) => {
+        dispatch(switchFavorites(productId))
     }
 
-    const onCart = () => {
-        toast.success("added to cart", {
-            position: "top-center",
-            autoClose: 2000,
-        })
-    }
+    const onCart = () => {}
 
     return (
         <SC.ProductCard>
-            <SC.HeartIconWrapper onClick={() => onFavorite(product)}>
-                {checkFavorite === -1 ? (
-                    <HeartEmpty fill={colors.primary} />
-                ) : (
+            <SC.HeartIconWrapper onClick={() => onFavorite(product.id)}>
+                {checkFavorite ? (
                     <HeartFilled fill={colors.primary} />
+                ) : (
+                    <HeartEmpty fill={colors.primary} />
                 )}
             </SC.HeartIconWrapper>
-            <Link to={`/product/${product.slug || product.id}`}>
+            <Link to={`/products/${product.slug || product.id}`}>
                 <SC.CardImg src={product.imgSrc} alt={`Зображення ${product.title}`} />
             </Link>
-            <SC.PriceWrapper>
-                <SC.CardPrice>{product.priceRegular} ₴</SC.CardPrice>
-                {product.priceDiscounted && (
-                    <SC.CardDiscount>{product.priceDiscounted} ₴</SC.CardDiscount>
+            <SC.CardInfo>
+                <SC.PriceWrapper>
+                    <SC.CardPrice>{product.priceRegular} ₴</SC.CardPrice>
+                    {product.priceDiscounted && (
+                        <SC.CardDiscount>{product.priceDiscounted} ₴</SC.CardDiscount>
+                    )}
+                </SC.PriceWrapper>
+                <Link to={`/product/${product.slug || product.id}`}>
+                    <SC.CardTitle>{product.title}</SC.CardTitle>
+                </Link>
+                <SC.CardDesc>{product.desc}</SC.CardDesc>
+                {isFavoritePage ? (
+                    <>
+                        <SC.CardBtn onClick={onCart}>В кошик</SC.CardBtn>
+                        <SC.CardBtn onClick={onCart}>Видалити</SC.CardBtn>
+                    </>
+                ) : (
+                    <SC.CardBtn onClick={onCart}>В кошик</SC.CardBtn>
                 )}
-            </SC.PriceWrapper>
-            <Link to={`/product/${product.slug || product.id}`}>
-                <SC.CardTitle>{product.title}</SC.CardTitle>
-            </Link>
-            <SC.CardDesc>{product.desc}</SC.CardDesc>
-            <SC.CardBtn onClick={onCart}>В кошик</SC.CardBtn>
+            </SC.CardInfo>
         </SC.ProductCard>
     )
 }

@@ -1,8 +1,3 @@
-export interface I_Store {
-    auth: I_AuthState
-    products: I_ProductState
-}
-
 export interface I_AuthState {
     user: I_User
     token: string | null
@@ -37,26 +32,4 @@ export interface I_AuthResponse {
         nameFirst: string
     }
     token: string
-}
-
-export interface I_ProductState {
-    allProducts: I_AllProductsState
-    favorites: I_Product[]
-    filter: string
-}
-
-export interface I_AllProductsState {
-    items: I_Product[]
-    isLoading: boolean
-    error: string | {} | null
-}
-
-export interface I_Product {
-    id: string
-    slug?: string
-    imgSrc: string
-    priceRegular: number
-    priceDiscounted?: number
-    title: string
-    desc: string
 }

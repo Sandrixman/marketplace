@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import { register, logIn, logOut, refreshUser } from "./operations"
-import { I_AuthResponse, I_AuthState, I_User } from "../types"
+import { I_AuthResponse, I_AuthState, I_User } from "types/auth/types"
 
 const initialState: I_AuthState = {
     user: {

@@ -1,12 +1,8 @@
 import axios, { AxiosError } from "axios"
 import { createAsyncThunk, SerializedError } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import {
-    I_AuthResponse,
-    I_RegisterCredentials,
-    I_LoginCredentials,
-    I_Store,
-} from "redux-store/types"
+import { I_AuthResponse, I_RegisterCredentials, I_LoginCredentials } from "types/auth/types"
+import { I_Store } from "redux-store/store"
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com/"
 

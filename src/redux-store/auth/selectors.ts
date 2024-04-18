@@ -1,4 +1,4 @@
-import { I_Store } from "../types"
+import { I_Store } from "redux-store/store"
 
 export const selectIsLoggedIn = (state: I_Store) => state.auth.isLoggedIn
 

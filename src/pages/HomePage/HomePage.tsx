@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet"
-import ProductCard from "components/ProductCard"
-import * as SC from "./styled"
 import { useSelector } from "react-redux"
 import { selectFilteredOutProducts } from "redux-store/products/selectors"
+import ProductCard from "components/ProductCard"
+import * as SC from "./styled"
 
 const HomePage: React.FC = () => {
     const filteredOutProducts = useSelector(selectFilteredOutProducts)

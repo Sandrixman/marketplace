@@ -1,21 +1,22 @@
 import { ChangeEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import { paths } from "routes/helpers"
 import { selectIsLoggedIn } from "redux-store/auth/selectors"
-import { selectFavorites, selectFilter } from "redux-store/products/selectors"
+import { selectFavoritesId, selectFilter } from "redux-store/products/selectors"
 
 import { LangSwitcher, ThemeSwitcher } from "features"
 import DropdownPanel from "common/DropdownPanel"
 import UserDropdownMenu from "./UserDropdownMenu"
 import UserAvatar from "./UserAvatar"
 
-import logo from "../img/logo.png"
+import logo from "img/logo.png"
 import * as SC from "./styled"
 import { findProduct } from "redux-store/products/slice"
 
 const Header: React.FC = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
-    const favorites = useSelector(selectFavorites)
+    const favoritesId = useSelector(selectFavoritesId)
     const filter = useSelector(selectFilter)
 
     const dispatch = useDispatch()
@@ -28,7 +29,9 @@ const Header: React.FC = () => {
     return (
         <>
             <SC.HeaderWrapper>
-                <SC.Logo src={logo} alt="Логотип" />
+                <Link to={paths.home}>
+                    <SC.Logo src={logo} alt="Логотип" />
+                </Link>
                 <button>Каталог</button>
                 <input
                     type="text"
@@ -38,13 +41,15 @@ const Header: React.FC = () => {
                 />
                 {!isLoggedIn ? (
                     <>
-                        <SC.BtnFavorites count={favorites.length} />
+                        <Link to={paths.favorites}>
+                            <SC.BtnFavorites count={favoritesId.length} />
+                        </Link>
                         <DropdownPanel toggler={(toggleFn) => <UserAvatar onClick={toggleFn} />}>
                             <UserDropdownMenu />
                         </DropdownPanel>
                     </>
                 ) : (
-                    <SC.LoginLink to={paths.login}>Увійти</SC.LoginLink>
+                    <Link to={paths.login}>Увійти</Link>
                 )}
                 {/* <ThemeSwitcher />
                 <LangSwitcher /> */}
