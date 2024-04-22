@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 import { I_AuthResponse, I_RegisterCredentials, I_LoginCredentials } from "types/auth/types"
 import { I_Store } from "redux-store/store"
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com/"
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 const setAuthHeader = (token: string) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`

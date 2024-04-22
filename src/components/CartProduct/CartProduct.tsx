@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useMemo } from "react"
-import { useLocation } from "react-router-dom"
-import { switchFavorites, addCartProduct } from "redux-store/products/slice"
+import { switchFavorites } from "redux-store/products/slice"
 import { selectFavoritesId } from "redux-store/products/selectors"
 
 import colors from "consts/colors"
@@ -14,10 +12,6 @@ import * as SC from "./styled"
 const ProductCard: React.FC<I_Product> = (product) => {
     const dispatch = useDispatch()
     const favoritesId = useSelector(selectFavoritesId)
-    const location = useLocation()
-
-    // checking for render the extra button
-    const isFavoritePage = useMemo(() => location.pathname === "/favorites", [location.pathname])
 
     const checkFavorite = favoritesId.includes(product.id)
 
@@ -25,12 +19,9 @@ const ProductCard: React.FC<I_Product> = (product) => {
         dispatch(switchFavorites(productId))
     }
 
-    const onCart = (cart: I_Product) => {
-        dispatch(addCartProduct(cart))
-    }
-
     return (
         <SC.ProductCard>
+            <div>{product.quantity}</div>
             <SC.HeartIconWrapper onClick={() => onFavorite(product.id)}>
                 {checkFavorite ? (
                     <HeartFilled fill={colors.primary} />
@@ -57,14 +48,6 @@ const ProductCard: React.FC<I_Product> = (product) => {
                     <SC.CardTitle>{product.title}</SC.CardTitle>
                 </Link>
                 <SC.CardDesc>{product.description}</SC.CardDesc>
-                {isFavoritePage ? (
-                    <SC.CardBtnWrapper>
-                        <SC.CardBtn onClick={() => onCart(product)}>В кошик</SC.CardBtn>
-                        <SC.CardBtn>Видалити</SC.CardBtn>
-                    </SC.CardBtnWrapper>
-                ) : (
-                    <SC.CardBtn onClick={() => onCart(product)}>В кошик</SC.CardBtn>
-                )}
             </SC.CardInfo>
         </SC.ProductCard>
     )

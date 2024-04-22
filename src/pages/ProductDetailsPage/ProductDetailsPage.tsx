@@ -14,7 +14,9 @@ const ProductDetailsPage: React.FC = () => {
     const allProducts = useSelector(selectAllProducts)
     const favoritesId = useSelector(selectFavoritesId)
 
-    const currentProduct = allProducts.find((p) => [p.id, p.slug].includes(idOrSlug))
+    const currentProduct = allProducts.find((p) => {
+        return [p.id.toString(), p.slug].includes(idOrSlug)
+    })
 
     const onFavorite = (productId: string) => {
         dispatch(switchFavorites(productId))
@@ -24,7 +26,7 @@ const ProductDetailsPage: React.FC = () => {
         return <div>Товар не знайдено</div>
     }
 
-    const { id, title, desc, imgSrc, priceRegular, priceDiscounted } = currentProduct
+    const { id, title, description, image, price, priceDiscounted } = currentProduct
 
     const checkFavorite = favoritesId.includes(id)
 
@@ -34,18 +36,32 @@ const ProductDetailsPage: React.FC = () => {
                 <title>ProductDetailsPage</title>
             </Helmet>
 
-            <SC.HeartIconWrapper onClick={() => onFavorite(id)}>
-                {checkFavorite ? (
-                    <HeartFilled fill={colors.primary} />
-                ) : (
-                    <HeartEmpty fill={colors.primary} />
-                )}
-            </SC.HeartIconWrapper>
-            <img src={imgSrc} alt={`Зображення ${currentProduct.title}`} />
-            <SC.Div>{title}</SC.Div>
-            <SC.Div>{priceRegular}</SC.Div>
-            <SC.Div>{priceDiscounted}</SC.Div>
-            <SC.Div>{desc}</SC.Div>
+            <SC.ProductDetails>
+                <SC.Image
+                    src={`${process.env.REACT_APP_API_URL}/images/products/${image}`}
+                    alt={`Зображення ${currentProduct.title}`}
+                />
+                <SC.ProductInfo>
+                    <SC.Title>{title}</SC.Title>
+                    <SC.TradeBlock>
+                        <SC.PriceWrapper>
+                            {priceDiscounted && (
+                                <SC.PriceDiscounted>{priceDiscounted} ₴</SC.PriceDiscounted>
+                            )}
+                            <SC.Price>{price} ₴</SC.Price>
+                        </SC.PriceWrapper>
+                        <SC.HeartIconWrapper onClick={() => onFavorite(id)}>
+                            {checkFavorite ? (
+                                <HeartFilled fill={colors.primary} />
+                            ) : (
+                                <HeartEmpty fill={colors.primary} />
+                            )}
+                        </SC.HeartIconWrapper>
+                        <SC.MainBtn>Купити</SC.MainBtn>
+                    </SC.TradeBlock>
+                    <SC.Desc>{description}</SC.Desc>
+                </SC.ProductInfo>
+            </SC.ProductDetails>
         </>
     )
 }

@@ -5,7 +5,10 @@ export const pathsPublic: { [key: string]: string } = {
 }
 
 export const pathsPrivate: { [key: string]: string } = {
+    orders: "/orders",
     favorites: "/favorites",
+    notification: "/notification",
+    cart: "/cart",
     accountSettings: "/account-settings",
 }
 

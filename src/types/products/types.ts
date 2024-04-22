@@ -1,6 +1,9 @@
 export interface I_ProductState {
     allProducts: I_AllProductsState
+    orders: string[]
     favoritesId: string[]
+    notification: string[]
+    cart: I_Product[]
     filter: string
 }
 
@@ -13,9 +16,10 @@ export interface I_AllProductsState {
 export interface I_Product {
     id: string
     slug?: string
-    imgSrc: string
-    priceRegular: number
+    image: string
+    price: number
     priceDiscounted?: number
     title: string
-    desc: string
+    description: string
+    quantity?: number
 }

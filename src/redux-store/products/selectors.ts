@@ -5,7 +5,13 @@ export const selectAllProducts = (state: I_Store) => state.products.allProducts.
 
 export const selectFilter = (state: I_Store) => state.products.filter.toLowerCase()
 
+export const selectOrders = (state: I_Store) => state.products.orders
+
 export const selectFavoritesId = (state: I_Store) => state.products.favoritesId
+
+export const selectNotification = (state: I_Store) => state.products.notification
+
+export const selectCart = (state: I_Store) => state.products.cart
 
 export const selectProductsLoading = (state: I_Store) => state.products.allProducts.isLoading
 

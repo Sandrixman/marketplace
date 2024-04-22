@@ -1,2 +1,2 @@
-export * as phonebookOperations from './operations';
-export * as phonebookSelectors from './selectors';
+export * as productsOperations from "./operations"
+export * as productsSelectors from "./selectors"
